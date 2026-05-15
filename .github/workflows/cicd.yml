@@ -61,15 +61,7 @@ jobs:
             docker pull ${{ secrets.DOCKER_USERNAME }}/sopkathon:latest
             docker stop sopkathon-app || true
             docker rm sopkathon-app || true
-            docker run -d \
-              --name sopkathon-app \
-              --restart unless-stopped \
-              -p 127.0.0.1:8080:8080 \
-              -e TZ=Asia/Seoul \
-              -e SPRING_DATASOURCE_URL=jdbc:mysql://${{ secrets.DB_HOST }}:3306/${{ secrets.DB_NAME }}?useSSL=true&serverTimezone=Asia/Seoul&characterEncoding=UTF-8 \
-              -e SPRING_DATASOURCE_USERNAME=${{ secrets.DB_USERNAME }} \
-              -e SPRING_DATASOURCE_PASSWORD=${{ secrets.DB_PASSWORD }} \
-              ${{ secrets.DOCKER_USERNAME }}/sopkathon:latest
+            docker run -d --name sopkathon-app --restart unless-stopped -p 127.0.0.1:8080:8080 -e TZ=Asia/Seoul -e SPRING_DATASOURCE_URL=jdbc:mysql://${{ secrets.DB_HOST }}:3306/${{ secrets.DB_NAME }}?useSSL=true&serverTimezone=Asia/Seoul&characterEncoding=UTF-8 -e SPRING_DATASOURCE_USERNAME=${{ secrets.DB_USERNAME }} -e SPRING_DATASOURCE_PASSWORD=${{ secrets.DB_PASSWORD }} ${{ secrets.DOCKER_USERNAME }}/sopkathon:latest
             docker image prune -f
             sleep 20
             echo "===== container logs ====="
