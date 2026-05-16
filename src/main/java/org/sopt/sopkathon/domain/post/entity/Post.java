@@ -57,4 +57,12 @@ public class Post extends BaseTimeEntity {
     public static Post create(Member member, String content, PostCategory category) {
         return new Post(member, content, category);
     }
+
+    public void increaseClapCount() {
+        this.clapCount++;
+    }
+
+    public void increaseSupportCount() {
+        this.supportCount++;
+    }
 }

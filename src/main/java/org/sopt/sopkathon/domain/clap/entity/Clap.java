@@ -34,4 +34,13 @@ public class Clap {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id", nullable = false)
     private Post post;
+
+    private Clap(Member member, Post post) {
+        this.member = member;
+        this.post = post;
+    }
+
+    public static Clap create(Member member, Post post) {
+        return new Clap(member, post);
+    }
 }
