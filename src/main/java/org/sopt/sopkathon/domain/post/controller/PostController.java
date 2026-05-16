@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.sopt.sopkathon.domain.post.code.PostSuccessCode;
 import org.sopt.sopkathon.domain.post.dto.request.CreatePostRequest;
 import org.sopt.sopkathon.domain.post.dto.response.CreatePostResponse;
+import org.sopt.sopkathon.domain.post.dto.response.PostDetailResponse;
 import org.sopt.sopkathon.domain.post.dto.response.PostListResponse;
 import org.sopt.sopkathon.domain.post.enums.PostCategory;
 import org.sopt.sopkathon.domain.post.service.PostService;
@@ -62,5 +63,22 @@ public class PostController {
         return ResponseEntity
                 .status(PostSuccessCode.FIND_POST_LIST.getHttpStatus())
                 .body(BaseResponse.success(PostSuccessCode.FIND_POST_LIST, response));
+    }
+
+
+    @Operation(summary = "게시글 상세 조회", description = "게시글 상세 조회합니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "게시글 상세 조회 성공"),
+            @ApiResponse(responseCode = "404", description = "존재 하지 않는 페이지")
+    })
+    @GetMapping({"/{postId}"})
+    public ResponseEntity<BaseResponse<PostDetailResponse>> getPostDetail(
+            @RequestParam long postId
+    ){
+        PostDetailResponse response = postService.findPostDetailById(postId);
+
+        return ResponseEntity
+                .status(PostSuccessCode.READ_POST_DETAIL.getHttpStatus())
+                .body(BaseResponse.success(PostSuccessCode.READ_POST_DETAIL, response));
     }
 }
