@@ -47,4 +47,14 @@ public class Post extends BaseTimeEntity {
 
     @Column(nullable = false)
     private int commentCount = 0;
+
+    private Post(Member member, String content, PostCategory category) {
+        this.member = member;
+        this.content = content;
+        this.category = category;
+    }
+
+    public static Post create(Member member, String content, PostCategory category) {
+        return new Post(member, content, category);
+    }
 }
