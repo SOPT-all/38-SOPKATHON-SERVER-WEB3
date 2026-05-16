@@ -15,6 +15,7 @@ import org.sopt.sopkathon.domain.post.service.PostService;
 import org.sopt.sopkathon.global.response.BaseResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -54,9 +55,11 @@ public class PostController {
     })
     @GetMapping
     public ResponseEntity<BaseResponse<PostListResponse>> getPosts(
+            @RequestHeader("Member-Id") Long memberId,
             @RequestParam(defaultValue = "KINDNESS") String postCategory
     ) {
         PostListResponse response = postService.findPostsByCategory(
+                memberId,
                 PostCategory.from(postCategory)
         );
 
@@ -73,9 +76,10 @@ public class PostController {
     })
     @GetMapping({"/{postId}"})
     public ResponseEntity<BaseResponse<PostDetailResponse>> getPostDetail(
-            @RequestParam long postId
-    ){
-        PostDetailResponse response = postService.findPostDetailById(postId);
+            @RequestHeader("Member-Id") Long memberId,
+            @PathVariable long postId
+    ) {
+        PostDetailResponse response = postService.findPostDetailById(memberId, postId);
 
         return ResponseEntity
                 .status(PostSuccessCode.READ_POST_DETAIL.getHttpStatus())
