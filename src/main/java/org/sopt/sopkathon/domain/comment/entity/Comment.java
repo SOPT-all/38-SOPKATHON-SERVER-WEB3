@@ -35,5 +35,22 @@ public class Comment extends BaseTimeEntity {
     private Member member;
 
     @Column(nullable = false)
+    private String content;
+
+    @Column(nullable = false)
     private int commentLikeCount = 0;
+
+    private Comment(Post post, Member member, String content) {
+        this.post = post;
+        this.member = member;
+        this.content = content;
+    }
+
+    public static Comment create(Post post, Member member, String content) {
+        return new Comment(post, member, content);
+    }
+
+    public void increaseCommentLikeCount() {
+        this.commentLikeCount++;
+    }
 }
