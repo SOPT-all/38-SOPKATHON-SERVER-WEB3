@@ -25,7 +25,9 @@ public record MemberPageResponse(
             Long postId,
             PostCategory category,
             String content,
-            int clapCount
+            int clapCount,
+            int supportCount,
+            int commentCount
     ) {
 
         public static PostInfo from(Post post) {
@@ -33,7 +35,9 @@ public record MemberPageResponse(
                     post.getId(),
                     post.getCategory(),
                     post.getContent(),
-                    post.getClapCount()
+                    post.getClapCount(),
+                    post.getSupportCount(),
+                    post.getCommentCount()
             );
         }
     }
