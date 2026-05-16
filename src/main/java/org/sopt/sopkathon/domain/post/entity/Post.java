@@ -65,4 +65,8 @@ public class Post extends BaseTimeEntity {
     public void increaseSupportCount() {
         this.supportCount++;
     }
+
+    public void increaseCommentCount() {
+        this.commentCount++;
+    }
 }

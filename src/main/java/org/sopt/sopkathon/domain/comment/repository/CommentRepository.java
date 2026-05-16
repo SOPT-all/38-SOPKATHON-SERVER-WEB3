@@ -1,4 +1,4 @@
-package org.sopt.sopkathon.domain.comment.entity.repository;
+package org.sopt.sopkathon.domain.comment.repository;
 
 import java.util.List;
 import org.sopt.sopkathon.domain.comment.entity.Comment;

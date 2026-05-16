@@ -3,7 +3,7 @@ package org.sopt.sopkathon.domain.post.service;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.sopt.sopkathon.domain.comment.entity.Comment;
-import org.sopt.sopkathon.domain.comment.entity.repository.CommentRepository;
+import org.sopt.sopkathon.domain.comment.repository.CommentRepository;
 import org.sopt.sopkathon.domain.member.code.MemberErrorCode;
 import org.sopt.sopkathon.domain.member.entity.Member;
 import org.sopt.sopkathon.domain.member.repository.MemberRepository;
