@@ -12,7 +12,8 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI openAPI() {
         return new OpenAPI()
-                .addServersItem(new Server().url("https://sopkathon-web3.p-e.kr"))
+                .addServersItem(new Server().url("http://localhost:8080").description("Local Server"))
+                .addServersItem(new Server().url("https://sopkathon-web3.p-e.kr").description("Production Server"))
                 .info(new Info()
                         .title("솝커톤 WEB 3팀 API")
                         .description("솝커톤 WEB 3팀 서버 API 문서")
