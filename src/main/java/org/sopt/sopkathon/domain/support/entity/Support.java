@@ -34,4 +34,13 @@ public class Support {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id", nullable = false)
     private Post post;
+
+    private Support(Member member, Post post) {
+        this.member = member;
+        this.post = post;
+    }
+
+    public static Support create(Member member, Post post) {
+        return new Support(member, post);
+    }
 }
