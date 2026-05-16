@@ -15,7 +15,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.sopt.sopkathon.domain.member.entity.Member;
-import org.sopt.sopkathon.domain.post.enums.Category;
+import org.sopt.sopkathon.domain.post.enums.PostCategory;
 import org.sopt.sopkathon.global.entity.BaseTimeEntity;
 
 @Entity
@@ -37,7 +37,7 @@ public class Post extends BaseTimeEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Category category;
+    private PostCategory category;
 
     @Column(nullable = false)
     private int clapCount = 0;

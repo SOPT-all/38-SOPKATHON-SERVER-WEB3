@@ -1,5 +1,5 @@
 package org.sopt.sopkathon.domain.post.enums;
 
-public enum Category {
+public enum PostCategory {
     KINDNESS, BOAST
 }
